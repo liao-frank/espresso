@@ -9,3 +9,6 @@
   - `espresso generate scaffold HighScore game:string score:integer`
 - espresso destroy
   - `espresso destroy model Oops`
+
+
+### app.js life cycle
