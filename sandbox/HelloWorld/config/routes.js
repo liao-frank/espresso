@@ -1,5 +1,7 @@
 class AppRoutes extends BeanRoutes {
+	// METHOD('PATH', 'CONTROLLER#ACTION');
 	use() {
-		// METHOD('PATH', 'CONTROLELR#ACTION');
+		this.get('/test/foo', 'test#foo');
+		this.get('/test/bar', 'test#bar');
 	}
 }

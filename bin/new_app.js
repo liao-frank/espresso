@@ -13,7 +13,7 @@ function uncamelcase(s) {
 	return new_chars.join('');
 }
 
-function parseArguments(args) {
+function parse_arguments(args) {
 	if ( args.length != 1 ) {
 		cli.escape("Wrong number of parameters. Try 'espresso new NAME'.");
 	}
@@ -22,7 +22,7 @@ function parseArguments(args) {
 	}
 }
 
-function setupDir(dir_name) {
+function setup_dir(dir_name) {
 	let content;
 	// app directory
 	cli.mkdir(dir_name + '/app');
@@ -36,26 +36,27 @@ function setupDir(dir_name) {
 	cli.mkdir(dir_name + '/app/models');
 	cli.mkdir(dir_name + '/app/views');
 	cli.mkdir(dir_name + '/app/views/layouts');
-	copyStatic(dir_name + '/app/views/layouts/application.ejs', 'application.ejs');
+	copy_static(dir_name + '/app/views/layouts/application.ejs', 'application.ejs');
 	// config directory
 	cli.mkdir(dir_name + '/config');
-	copyStatic(dir_name + '/config/routes.js', 'routes.js');
+	copy_static(dir_name + '/config/routes.js', 'routes.js');
 	// public directory
 	cli.mkdir(dir_name + '/public');
 	// lib directory
 	cli.mkdir(dir_name + '/lib');
 	// main directory
-	copyStatic(dir_name + '/package.json', 'package.json');
+	content = cli.cat(`${__dirname}/../lib/static/package.json`);
+	fs.writeFileSync(dir_name + '/package.json', content.replace(/\$\{ uncamelcase\(dir_name\) \}/, `${ uncamelcase(dir_name) }`));
 	cli.touch(dir_name + '/README.md');
 }
 
-function copyStatic(file_path, static_file_name) {
+function copy_static(file_path, static_file_name) {
 	fs.writeFileSync(file_path, cli.cat(`${__dirname}/../lib/static/${static_file_name}`));
 }
 
 exports.init = function(args) {
-	let props = parseArguments(args);
+	let props = parse_arguments(args);
 	cli.mkdir(props.app_name);
-	setupDir(props.app_name);
+	setup_dir(props.app_name);
 }
 

@@ -2,7 +2,7 @@ let fs = require('fs');
 let cli = require(__dirname + '/../lib/cli.js');
 let mvc_generator = require(__dirname + '/../lib/mvc_generator.js');
 
-function parseArguments(args) {
+function parse_arguments(args) {
 	if (args.length < 1) {
 		cli.escape("Wrong number of parameters. Try 'espresso generate GENERATOR NAME [args]'.");
 	}
@@ -12,24 +12,26 @@ function parseArguments(args) {
 	}
 }
 
-function generateController(dirname, args) {
+function generate_controller(dirname, args) {
 	if ( args.length < 1 ) {
 		cli.escape("Wrong number of parameters. Try 'espresso generate controller NAME [action:method]'.");
 	}
-	mvc_generator.generateController(dirname, args[0], args.slice(1)); 
+	mvc_generator.generate_controller(dirname, args[0], args.slice(1)); 
 }
 
-function generateModel(dirname, args) {
+function generate_model(dirname, args) {
 
 }
 
 exports.init = function(args) {
-	let props = parseArguments(args);
+	let props = parse_arguments(args);
 	switch(props.generator) {
 		case 'controller':
-			generateController(props.args);
+			generate_controller('.', props.args);
+			break;
 		case 'model':
-			generateController(props.args);
+			generate_model('.', props.args);
+			break;
 		default:
 			cli.escape(`Invalid Generator Type: ${props.generator}`);
 	}
