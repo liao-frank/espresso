@@ -5,7 +5,7 @@
 	- has CLI supported by Javascript, not Ruby. This means out-of-the-box compatibility with Windows
 - WebSockets > AJAX
 	- has OOTB support for sockets as specific as route-level
-	- supported by Socket.IO, meaning compability with older browsers
+	- supported by Socket.IO, meaning compability with older browsers through long polling
 - Asset Specificity > Asset Clashing
 	- has decoupled compiled assets for each controller, whereas Rails bundles all your styles and scripts together
 - MongoDB > SQL
