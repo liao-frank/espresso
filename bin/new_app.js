@@ -29,10 +29,11 @@ function setup_dir(dir_name) {
 	cli.mkdir(dir_name + '/app/assets');
 	cli.mkdir(dir_name + '/app/assets/images');
 	cli.mkdir(dir_name + '/app/assets/js');
-	cli.touch(dir_name + '/app/assets/js/scripts.js');
+	copy_static(dir_name + '/app/assets/js/scripts.js', 'scripts.js');
 	cli.mkdir(dir_name + '/app/assets/css');
 	cli.touch(dir_name + '/app/assets/css/styles.css');
 	cli.mkdir(dir_name + '/app/controllers');
+	cli.mkdir(dir_name + '/app/controllers/socketed_controllers');
 	cli.mkdir(dir_name + '/app/models');
 	cli.mkdir(dir_name + '/app/views');
 	cli.mkdir(dir_name + '/app/views/layouts');
