@@ -6,7 +6,7 @@ class HomeController extends BeanController {
 	home(req, res) {
 
 		res.render({
-			__title: 'Espresso.js'
+			__title: 'espresso.js'
 		});
 	}
 
