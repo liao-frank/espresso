@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= __title %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
+		<%- __stylesheet_tags %>
+		<%- __javascript_tags %>
+	</head>
+	<body>
+		<header class="page-header">
+			<div class="logo">
+				<span class="logo-text">espresso.js</span>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a>Home</a>
+					</li>
+					<li>
+						<a>Demos</a>
+					</li>
+					<li>
+						<a>Getting started</a>
+					</li>
+					<li>
+						<a>Docs</a>
+					</li>
+					<li>
+						<a>Blog</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="right">
+				<iframe allowtransparency="true" scrolling="no" frameborder="0" src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fliao-frank%2Fespresso&amp;aria-label=Star%20liao-frank%2Fespresso%20on%20GitHub&amp;data-text=Star&amp;data-show-count=true" style="width: 72px; height: 20px; border: none;"></iframe>
+				<a class="button round emerald download">
+					Download v1.0.0
+				</a>
+			</div>
+		</header>
+		<%- include(__yield) %>
+	</body>
+</html>
