@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= __title %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
+		<%- __stylesheet_tags %>
+		<%- __javascript_tags %>
+	</head>
+	<body>
+		<header class="page-header">
+			<div class="logo">
+				<span class="logo-text">espresso.js</span>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a>Home</a>
+					</li>
+					<li>
+						<a>Demos</a>
+					</li>
+						<a>Getting started</a>
+					<li>
+						<a>Docs</a>
+					</li>
+					<li>
+						<a>Blog</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<%- include(__yield) %>
+	</body>
+</html>
