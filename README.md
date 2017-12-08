@@ -26,7 +26,9 @@ Unfortunately, espresso is not perfect. Not following these conventions might re
 When running commands, all commands should be run from the outermost directory of your app directory.
 
 For example, if your project is called HelloWorld. Commands should be run in 
-```/HelloWorld```
+```
+/HelloWorld
+```
 They should not be run in any of the following or similar directories
 ```
 /HelloWorld/app
@@ -45,11 +47,15 @@ espresso runs it's own server configurations when starting a server and will int
 ## Creating your first espresso app
 ### Installation
 Let's get started! To install espresso, run the following command
-```npm install espresso-js --global```
+```
+npm install espresso-js --global
+```
 
 ### Creating the app
 To create the app, run the following command
-```espresso new APP_NAME```
+```
+espresso new APP_NAME
+```
 
 Afterwards, `cd` into your app directory and make sure that personal attributes in package.json are to your liking.
 
@@ -66,7 +72,9 @@ Supported HTTP methods include:
 - DELETE
 
 An example call is as follows
-```espresso generate controller Dog index show create:post update:put delete:delete```
+```
+espresso generate controller Dog index show create:post update:put delete:delete
+```
 The command creates a simple CRUD controller named Dog.
 
 Routing configurations will be generated automatically, and can be viewed in `config/routes.js`.
@@ -82,7 +90,9 @@ Views are automatically created for GET actions during controller generation.
 
 ### Starting your server
 To start a local server, run the following command
-```espresso server```
+```
+espresso server
+```
 
 You can connect to the localhost on port 50000.
 
