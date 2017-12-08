@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 let fs = require('fs');
 let cli = require(__dirname + '/../lib/cli.js');
 
