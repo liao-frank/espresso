@@ -1,0 +1,108 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.3
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\suadmin\\Documents\\projects\\espresso',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\suadmin\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle espresso-js@1.0.4~prepublish: espresso-js@1.0.4
+11 silly lifecycle espresso-js@1.0.4~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\suadmin\\AppData\\Roaming\\npm-cache\\espresso-js\\1.0.4\\package.tgz',
+12 verbose tar pack   'C:\\Users\\suadmin\\Documents\\projects\\espresso' ]
+13 verbose tarball C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package.tgz
+14 verbose folder C:\Users\suadmin\Documents\projects\espresso
+15 verbose addLocalTarball adding from inside cache C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package.tgz
+16 verbose correctMkdir C:\Users\suadmin\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd espresso-js@1.0.4
+18 verbose afterAdd C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\suadmin\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package\package.json written
+21 silly publish { name: 'espresso-js',
+21 silly publish   version: '1.0.4',
+21 silly publish   description: 'A Ruby on Rails clone for Node',
+21 silly publish   main: 'index.js',
+21 silly publish   bin: { espresso: './bin/espresso.js' },
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/liao-frank/espresso.git' },
+21 silly publish   author: { name: 'Frank Liao' },
+21 silly publish   license: 'MIT',
+21 silly publish   homepage: 'https://github.com/liao-frank/espresso#readme',
+21 silly publish   readme: '# espresso\r\n\r\n## Why use espresso over Rails?\r\n- Platform Compatibility\r\n\t- has CLI supported by Javascript, not Ruby. This means out-of-the-box compatibility with Windows\r\n- WebSockets > AJAX\r\n\t- has OOTB support for sockets as specific as route-level\r\n\t- supported by Socket.IO, meaning compability with older browsers through long polling\r\n- Asset Specificity > Asset Clashing\r\n\t- has decoupled compiled assets for each controller, whereas Rails bundles all your styles and scripts together\r\n- MongoDB > SQL\r\n\t- has OOTB MongoDB support for flexible-schema-lovers\r\n- Event Loop Request Management > Threaded Request Management\r\n\t- using javascript means having the event loop. Throw requests at anything in memory and never worry about those nasty race conditions\r\n- Node Libraries\r\n\t- have access to all your favorite Node libraries in this highly unopinionated framework\r\n\r\n\r\n# Getting started\r\n## Conventions\r\nBefore we start, it\'s important to mention a few important conventions that should be followed when using espresso. \r\n\r\nUnfortunately, espresso is not perfect. Not following these conventions might result in espresso breaking or being unable to start a server.\r\n\r\n### Running espresso\'s command line\r\nWhen running commands, all commands should be run from the outermost directory of your app directory.\r\n\r\nFor example, if your project is called HelloWorld. Commands should be run in \r\n```\r\n/HelloWorld\r\n```\r\nThey should not be run in any of the following or similar directories\r\n```\r\n/HelloWorld/app\r\n/HelloWorld/config\r\n/GoodbyeWorld\r\n```\r\n#### Why?\r\nespresso currently does no checking of which sublevel of your app directory you are in. It needs help determining relative paths.\r\n\r\n### Using require()\r\nWhen using `require()` for node modules or local modules, prepend your paths with `./` and use relative paths from the main app directory, instead of `__dirname` or other methods that assume your current file\'s location.\r\n#### Why?\r\nespresso runs it\'s own server configurations when starting a server and will interpret user-given files in a different directory. Therefore, using `__dirname` will not work as expected.\r\n\r\n\r\n## Creating your first espresso app\r\n### Installation\r\nLet\'s get started! To install espresso, run the following command\r\n```\r\nnpm install espresso-js --global\r\n```\r\n\r\n### Creating the app\r\nTo create the app, run the following command\r\n```\r\nespresso new APP_NAME\r\n```\r\n\r\nAfterwards, `cd` into your app directory and make sure that personal attributes in package.json are to your liking.\r\n\r\nAnd make sure to install app dependencies by running `npm install`!\r\n### Generating a controller\r\nTo generate a controller, run the following command\r\n```espresso generate controller CONTROLLER_NAME [ACTION:METHOD]```\r\n\r\nOmitted methods will be assumed to be GET requests.\r\nSupported HTTP methods include:\r\n- GET\r\n- POST\r\n- PUT\r\n- DELETE\r\n\r\nAn example call is as follows\r\n```\r\nespresso generate controller Dog index show create:post update:put delete:delete\r\n```\r\nThe command creates a simple CRUD controller named Dog.\r\n\r\nRouting configurations will be generated automatically, and can be viewed in `config/routes.js`.\r\nViews (including style and script assets) will be automatically generated for GET actions.\r\n### Generating a model\r\nAt this time, espresso doesn\'t support model generation.\r\n\r\nOn the other hand, adding your own model modules is extremely easy. Just `require()` your modules in your controllers and you\'re good to go.\r\n\r\nYou\'re free to use modules for MongoDB, SQL databases, or even just throw your records into memory for smaller projects!\r\n### Customizing views\r\nViews are automatically created for GET actions during controller generation.\r\n\r\n### Starting your server\r\nTo start a local server, run the following command\r\n```\r\nespresso server\r\n```\r\n\r\nYou can connect to the localhost on port 50000.\r\n\r\nHappy coding!\r\n\r\n\r\n\r\nHaving issues? Visit the troubleshooting guide which includes known bugs.',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '09946f04a3bf6749bf92fdbef36eba7d50cd384d',
+21 silly publish   _id: 'espresso-js@1.0.4',
+21 silly publish   _shasum: '15ca8516b1c2a6d43a04f40b583d2f1b29bf756e',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name espresso-js
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'espresso-js',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'espresso-js',
+26 silly mapToRegistry   name: 'espresso-js',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/espresso-js
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\suadmin\AppData\Roaming\npm-cache\espresso-js\1.0.4\package.tgz
+30 verbose request uri https://registry.npmjs.org/espresso-js
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 3:27:17 AM
+33 verbose request using bearer token for auth
+34 verbose request id b1f052d8503e1d0e
+35 http request PUT https://registry.npmjs.org/espresso-js
+36 http 403 https://registry.npmjs.org/espresso-js
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '91',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Sun, 10 Dec 2017 08:27:33 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-dca17720-DCA',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1512894448.605883,VS0,VE6200',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating C:\Users\suadmin\AppData\Roaming\npm-cache\registry.npmjs.org\espresso-js on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: You cannot publish over the previously published version 1.0.4. : espresso-js
+40 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:290:14)
+40 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+40 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid espresso-js
+43 verbose cwd C:\Users\suadmin\Documents\projects\espresso
+44 error Windows_NT 10.0.14393
+45 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v6.10.3
+47 error npm  v3.10.10
+48 error code E403
+49 error You cannot publish over the previously published version 1.0.4. : espresso-js
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
