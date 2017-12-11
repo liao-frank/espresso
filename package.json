@@ -1,6 +1,6 @@
 {
   "name": "espresso-js",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A Ruby on Rails clone for Node",
   "main": "index.js",
   "bin": {
