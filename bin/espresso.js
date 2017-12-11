@@ -4,6 +4,13 @@ let cli = require(__dirname + '/../lib/cli.js');
 
 function parse_arguments(args) {
 	while (args[0].match(/(node)|(espresso)/)) {
+		if (args.length == 1) {
+			console.log("It's morning somewhere");
+			return {
+				command: "",
+				args: []
+			};
+		}
 		args = args.slice(1);
 	}
 
