@@ -39,9 +39,11 @@ They should not be run in any of the following or similar directories
 espresso currently does no checking of which sublevel of your app directory you are in. It needs help determining relative paths.
 
 ### Using require()
-When using `require()` for node modules or local modules, prepend your paths with `./` and use relative paths from the main app directory, instead of `__dirname` or other methods that assume your current file's location.
+When using `require()` inside of controllers, please `require('path');` and then prepend your `require` paths with `path.resolve()`. After prepending, use relative paths from the main app directory, instead of `__dirname`, `.`,  or other methods that assume your current file's location.
 #### Why?
-espresso runs it's own server configurations when starting a server and will interpret user-given files in a different directory. Therefore, using `__dirname` will not work as expected.
+espresso runs it's own server configurations when starting a server and will interpret controller files in a different directory. Therefore, using `__dirname` and others will not work as expected.
+
+It should be noted that only controllers are evaluated this way, so `require()` statements in other places should work as expected.
 
 
 ## Creating your first espresso app
