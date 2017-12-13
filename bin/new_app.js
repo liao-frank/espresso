@@ -25,39 +25,39 @@ function parse_arguments(args) {
 function setup_dir(dir_name) {
 	let content;
 	// app directory
-	console.log(`create	/app`);
+	console.warn(`create	/app`);
 	cli.mkdir(dir_name + '/app');
-	console.log(`create		/app/assets`);
+	console.warn(`create		/app/assets`);
 	cli.mkdir(dir_name + '/app/assets');
 	cli.mkdir(dir_name + '/app/assets/images');
 	cli.mkdir(dir_name + '/app/assets/js');
 	copy_static(dir_name + '/app/assets/js/scripts.js', 'scripts.js');
 	cli.mkdir(dir_name + '/app/assets/css');
 	cli.touch(dir_name + '/app/assets/css/styles.css');
-	console.log(`create		/app/controllers`);
+	console.warn(`create		/app/controllers`);
 	cli.mkdir(dir_name + '/app/controllers');
 	cli.mkdir(dir_name + '/app/controllers/socketed_controllers');
-	console.log(`create		/app/models`);
+	console.warn(`create		/app/models`);
 	cli.mkdir(dir_name + '/app/models');
-	console.log(`create		/app/views`);
+	console.warn(`create		/app/views`);
 	cli.mkdir(dir_name + '/app/views');
 	cli.mkdir(dir_name + '/app/views/layouts');
 	copy_static(dir_name + '/app/views/layouts/application.ejs', 'application.ejs');
 	// config directory
-	console.log(`create	/config`);
+	console.warn(`create	/config`);
 	cli.mkdir(dir_name + '/config');
 	copy_static(dir_name + '/config/routes.js', 'routes.js');
 	// public directory
-	console.log(`create	/public`);
+	console.warn(`create	/public`);
 	cli.mkdir(dir_name + '/public');
 	// lib directory
-	console.log(`create	/lib`);
+	console.warn(`create	/lib`);
 	cli.mkdir(dir_name + '/lib');
 	// main directory
 	content = cli.cat(`${__dirname}/../lib/static/package.json`);
-	console.log(`create	/package.json`);
+	console.warn(`create	/package.json`);
 	fs.writeFileSync(dir_name + '/package.json', content.replace(/\$\{ uncamelcase\(dir_name\) \}/, `${ uncamelcase(dir_name) }`));
-	console.log(`create	/README.md`);
+	console.warn(`create	/README.md`);
 	cli.touch(dir_name + '/README.md');
 }
 
